@@ -20,9 +20,22 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+J = (1/ m) * sum(-y' * log(sigmoid(X*theta)) - (1-y)'*log(1 - sigmoid(X*theta)));
+grad = (1/m) * sum(X .* repmat((sigmoid(X*theta) -y ), 1, size(X,2)) );
 
+%sum = 0;
+%for i = 1:m
+ % sum += -y(i)*log(sigmoid(X(i, :) * theta)) - (1-y(i))*log(1-sigmoid(X(i, :) * theta));
+%endfor
+%J = (1/m) * sum;
 
-
+%for i= 1:m
+ % sum2 = 0;
+  %for j = 1:m
+   % sum2 += sigmoid(X(j, :) * theta) - y(j);
+  %endfor
+  %grad(i) = (1/m) * sum2;
+%endfor
 
 
 
